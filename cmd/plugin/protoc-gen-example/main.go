@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -32,12 +33,13 @@ func processReq(req *plugin.CodeGeneratorRequest) *plugin.CodeGeneratorResponse 
 
 	var resp plugin.CodeGeneratorResponse
 	for _, fname := range req.FileToGenerate {
-		f := files[fname]
+		//f := files[fname]
 		out := fname + ".dump"
-		resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
-			Name:    proto.String(out),
-			Content: proto.String(proto.MarshalTextString(f)),
-		})
+		fmt.Fprintln(os.Stderr, out)
+		//resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
+		//	Name:    proto.String(out),
+		//	Content: proto.String(proto.MarshalTextString(f)),
+		//})
 	}
 	return &resp
 }

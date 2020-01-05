@@ -8,13 +8,13 @@ setup:
 #
 # protoc
 #
-PROTO_FILES ?= $(shell find defs -name '*.proto' | perl -pe 's|^defs/(.+)\.proto$$|go/$$1.pb.go|gc')
+PBGO_FILES ?= $(shell find proto -name '*.proto' | perl -pe 's|^proto/(.+)\.proto$$|go/$$1.pb.go|gc')
 .PHONY: protoc
 protoc:
-	@$(MAKE) $(PROTO_FILES)
+	@$(MAKE) $(PBGO_FILES)
 
-PATH := $(shell echo $$(pwd)/bin/plugins:$$PATH)
-go/%.pb.go: defs/%.proto
+PATH := $(shell echo $$(pwd)/bin/plugin:$$PATH)
+go/%.pb.go: proto/%.proto
 	@mkdir -p $(@D)
 	@PATH=$(PATH) protoc --go_out=go --example_out=go $^
 	@mv go/github.com/kei2100/playground-protobuf/$@ $@
