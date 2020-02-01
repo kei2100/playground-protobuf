@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
@@ -33,13 +33,13 @@ func processReq(req *plugin.CodeGeneratorRequest) *plugin.CodeGeneratorResponse 
 
 	var resp plugin.CodeGeneratorResponse
 	for _, fname := range req.FileToGenerate {
-		//f := files[fname]
-		out := fname + ".dump"
-		fmt.Fprintln(os.Stderr, out)
-		//resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
-		//	Name:    proto.String(out),
-		//	Content: proto.String(proto.MarshalTextString(f)),
-		//})
+		f := files[fname]
+		out := strings.TrimPrefix(fname, "proto/") + ".dump"
+		//fmt.Fprintln(os.Stderr, out)
+		resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
+			Name:    proto.String(out),
+			Content: proto.String(proto.MarshalTextString(f)),
+		})
 	}
 	return &resp
 }

@@ -8,17 +8,25 @@ setup:
 #
 # protoc
 #
-PBGO_FILES ?= $(shell find proto -name '*.proto' | perl -pe 's|^proto/(.+)\.proto$$|go/$$1.pb.go|gc')
+TARGETS ?= $(shell find proto -name '*.proto' | perl -pe 's|^proto/(.+)\.proto$$|go/$$1.pb.go|gc')
 .PHONY: protoc
 protoc:
-	@$(MAKE) $(PBGO_FILES)
+	@$(MAKE) $(TARGETS)
 
 PATH := $(shell echo $$(pwd)/bin/plugin:$$PATH)
+PLUGIN_OPT ?=
 go/%.pb.go: proto/%.proto
 	@mkdir -p $(@D)
-	@PATH=$(PATH) protoc --go_out=go --example_out=go $^
-	@mv go/github.com/kei2100/playground-protobuf/$@ $@
+	@PATH=$(PATH) protoc $(strip --go_out=go $(PLUGIN_OPT)) $^
+	@[ -f go/github.com/kei2100/playground-protobuf/$@ ] && mv go/github.com/kei2100/playground-protobuf/$@ $@
 	@rm -rf go/github.com
+
+#.PHONY: protoc.example
+#protoc.example:
+#	$(eval TARGETS = $(shell find proto -name '*.proto' | perl -pe 's|^proto/(.+)\.proto$$|go/$$1.proto.dump|gc'))
+#	$(eval TARGET_PATTERN = go/%.proto.dump)
+#	$(eval PLUGIN_OPT = --example_out=go)
+#	@PLUGIN_OPT=$(PLUGIN_OPT) TARGETS='$(TARGETS)' TARGET_PATTERN=$(TARGET_PATTERN) $(MAKE) protoc
 
 #
 # bin
