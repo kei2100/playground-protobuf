@@ -4,6 +4,10 @@
 .PHONY: setup
 setup:
 	which protoc || brew install protobuf
+	go get golang.org/x/tools/cmd/goimports
+
+fmt:
+	@goimports -w .
 
 #
 # protoc
@@ -25,12 +29,12 @@ protoc-gen-example:
 .PHONY: protoc.marshal-zap
 protoc-gen-marshal-zap:
 	@$(MAKE) bin/plugin/$@
-	@PLUGIN_OPT=--marshal-zap_out=go $(MAKE) protoc
+	@PLUGIN_OPT=--marshal-zap_out=:./go $(MAKE) protoc
 
-go/%.pb.go: proto/%.proto $(BIN_PREREQ_FILES)
+go/%.pb.go: proto/%.proto $(BIN_PREREQ_FILES) Makefile
 	@mkdir -p $(@D)
 	@PATH=$(shell echo $$(pwd)/bin/plugin:$$PATH) protoc $(strip --go_out=go $(PLUGIN_OPT)) proto/$*.proto
-	@[ -f go/github.com/kei2100/playground-protobuf/$@ ] && mv go/github.com/kei2100/playground-protobuf/$@ $@
+	@find go/github.com/kei2100/playground-protobuf -type f -name '*.go' | xargs -n 1 -I {} mv {} $(@D)
 	@rm -rf go/github.com
 
 #

@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	pgs.Init().
+	pgs.Init(pgs.DebugEnv("DEBUG")).
 		RegisterModule(module.New()).
 		RegisterPostProcessor(pgsgo.GoFmt()).
 		Render()
