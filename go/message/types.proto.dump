@@ -1,0 +1,1315 @@
+name: "proto/message/types.proto"
+package: "github.com.kei2100.playground_protobuf.message"
+dependency: "google/protobuf/any.proto"
+message_type: <
+  name: "Types"
+  field: <
+    name: "float64"
+    number: 1
+    label: LABEL_OPTIONAL
+    type: TYPE_DOUBLE
+    json_name: "float64"
+  >
+  field: <
+    name: "float32"
+    number: 2
+    label: LABEL_OPTIONAL
+    type: TYPE_FLOAT
+    json_name: "float32"
+  >
+  field: <
+    name: "int32"
+    number: 3
+    label: LABEL_OPTIONAL
+    type: TYPE_INT32
+    json_name: "int32"
+  >
+  field: <
+    name: "int64"
+    number: 4
+    label: LABEL_OPTIONAL
+    type: TYPE_INT64
+    json_name: "int64"
+  >
+  field: <
+    name: "uint32"
+    number: 5
+    label: LABEL_OPTIONAL
+    type: TYPE_UINT32
+    json_name: "uint32"
+  >
+  field: <
+    name: "uint64"
+    number: 6
+    label: LABEL_OPTIONAL
+    type: TYPE_UINT64
+    json_name: "uint64"
+  >
+  field: <
+    name: "sint32"
+    number: 7
+    label: LABEL_OPTIONAL
+    type: TYPE_SINT32
+    json_name: "sint32"
+  >
+  field: <
+    name: "sint64"
+    number: 8
+    label: LABEL_OPTIONAL
+    type: TYPE_SINT64
+    json_name: "sint64"
+  >
+  field: <
+    name: "fixed32"
+    number: 9
+    label: LABEL_OPTIONAL
+    type: TYPE_FIXED32
+    json_name: "fixed32"
+  >
+  field: <
+    name: "fixed64"
+    number: 10
+    label: LABEL_OPTIONAL
+    type: TYPE_FIXED64
+    json_name: "fixed64"
+  >
+  field: <
+    name: "sfixed32"
+    number: 11
+    label: LABEL_OPTIONAL
+    type: TYPE_SFIXED32
+    json_name: "sfixed32"
+  >
+  field: <
+    name: "sfixed64"
+    number: 12
+    label: LABEL_OPTIONAL
+    type: TYPE_SFIXED64
+    json_name: "sfixed64"
+  >
+  field: <
+    name: "bool"
+    number: 13
+    label: LABEL_OPTIONAL
+    type: TYPE_BOOL
+    json_name: "bool"
+  >
+  field: <
+    name: "string"
+    number: 14
+    label: LABEL_OPTIONAL
+    type: TYPE_STRING
+    json_name: "string"
+  >
+  field: <
+    name: "bytes"
+    number: 15
+    label: LABEL_OPTIONAL
+    type: TYPE_BYTES
+    json_name: "bytes"
+  >
+  field: <
+    name: "enum"
+    number: 16
+    label: LABEL_OPTIONAL
+    type: TYPE_ENUM
+    type_name: ".github.com.kei2100.playground_protobuf.message.Types.Enum"
+    json_name: "enum"
+  >
+  field: <
+    name: "nested"
+    number: 17
+    label: LABEL_OPTIONAL
+    type: TYPE_MESSAGE
+    type_name: ".github.com.kei2100.playground_protobuf.message.Types.Nested"
+    json_name: "nested"
+  >
+  field: <
+    name: "oneof_string"
+    number: 18
+    label: LABEL_OPTIONAL
+    type: TYPE_STRING
+    oneof_index: 0
+    json_name: "oneofString"
+  >
+  field: <
+    name: "oneof_int32"
+    number: 19
+    label: LABEL_OPTIONAL
+    type: TYPE_INT32
+    oneof_index: 0
+    json_name: "oneofInt32"
+  >
+  field: <
+    name: "string_list"
+    number: 20
+    label: LABEL_REPEATED
+    type: TYPE_STRING
+    json_name: "stringList"
+  >
+  field: <
+    name: "string_map"
+    number: 21
+    label: LABEL_REPEATED
+    type: TYPE_MESSAGE
+    type_name: ".github.com.kei2100.playground_protobuf.message.Types.StringMapEntry"
+    json_name: "stringMap"
+  >
+  field: <
+    name: "any"
+    number: 22
+    label: LABEL_OPTIONAL
+    type: TYPE_MESSAGE
+    type_name: ".google.protobuf.Any"
+    json_name: "any"
+  >
+  nested_type: <
+    name: "Nested"
+    field: <
+      name: "nested_string"
+      number: 1
+      label: LABEL_OPTIONAL
+      type: TYPE_STRING
+      json_name: "nestedString"
+    >
+  >
+  nested_type: <
+    name: "StringMapEntry"
+    field: <
+      name: "key"
+      number: 1
+      label: LABEL_OPTIONAL
+      type: TYPE_STRING
+      json_name: "key"
+    >
+    field: <
+      name: "value"
+      number: 2
+      label: LABEL_OPTIONAL
+      type: TYPE_STRING
+      json_name: "value"
+    >
+    options: <
+      map_entry: true
+    >
+  >
+  enum_type: <
+    name: "Enum"
+    value: <
+      name: "ENUM_UNKNOWN"
+      number: 0
+    >
+    value: <
+      name: "ENUM_FOO"
+      number: 1
+    >
+  >
+  oneof_decl: <
+    name: "oneof"
+  >
+>
+options: <
+  go_package: "github.com/kei2100/playground-protobuf/go/message"
+>
+source_code_info: <
+  location: <
+    span: 0
+    span: 0
+    span: 42
+    span: 1
+  >
+  location: <
+    path: 12
+    span: 0
+    span: 0
+    span: 18
+  >
+  location: <
+    path: 2
+    span: 1
+    span: 0
+    span: 55
+  >
+  location: <
+    path: 8
+    span: 2
+    span: 0
+    span: 72
+  >
+  location: <
+    path: 8
+    path: 11
+    span: 2
+    span: 0
+    span: 72
+  >
+  location: <
+    path: 3
+    path: 0
+    span: 4
+    span: 0
+    span: 35
+  >
+  location: <
+    path: 4
+    path: 0
+    span: 6
+    span: 0
+    span: 42
+    span: 1
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 1
+    span: 6
+    span: 8
+    span: 13
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    span: 7
+    span: 2
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    path: 5
+    span: 7
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    path: 1
+    span: 7
+    span: 9
+    span: 16
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    path: 3
+    span: 7
+    span: 19
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    span: 8
+    span: 2
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    path: 5
+    span: 8
+    span: 2
+    span: 7
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    path: 1
+    span: 8
+    span: 8
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    path: 3
+    span: 8
+    span: 18
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 2
+    span: 9
+    span: 2
+    span: 18
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 2
+    path: 5
+    span: 9
+    span: 2
+    span: 7
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 2
+    path: 1
+    span: 9
+    span: 8
+    span: 13
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 2
+    path: 3
+    span: 9
+    span: 16
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 3
+    span: 10
+    span: 2
+    span: 18
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 3
+    path: 5
+    span: 10
+    span: 2
+    span: 7
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 3
+    path: 1
+    span: 10
+    span: 8
+    span: 13
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 3
+    path: 3
+    span: 10
+    span: 16
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 4
+    span: 11
+    span: 2
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 4
+    path: 5
+    span: 11
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 4
+    path: 1
+    span: 11
+    span: 9
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 4
+    path: 3
+    span: 11
+    span: 18
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 5
+    span: 12
+    span: 2
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 5
+    path: 5
+    span: 12
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 5
+    path: 1
+    span: 12
+    span: 9
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 5
+    path: 3
+    span: 12
+    span: 18
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 6
+    span: 13
+    span: 2
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 6
+    path: 5
+    span: 13
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 6
+    path: 1
+    span: 13
+    span: 9
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 6
+    path: 3
+    span: 13
+    span: 18
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 7
+    span: 14
+    span: 2
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 7
+    path: 5
+    span: 14
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 7
+    path: 1
+    span: 14
+    span: 9
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 7
+    path: 3
+    span: 14
+    span: 18
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 8
+    span: 15
+    span: 2
+    span: 22
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 8
+    path: 5
+    span: 15
+    span: 2
+    span: 9
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 8
+    path: 1
+    span: 15
+    span: 10
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 8
+    path: 3
+    span: 15
+    span: 20
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 9
+    span: 16
+    span: 2
+    span: 23
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 9
+    path: 5
+    span: 16
+    span: 2
+    span: 9
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 9
+    path: 1
+    span: 16
+    span: 10
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 9
+    path: 3
+    span: 16
+    span: 20
+    span: 22
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 10
+    span: 17
+    span: 2
+    span: 25
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 10
+    path: 5
+    span: 17
+    span: 2
+    span: 10
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 10
+    path: 1
+    span: 17
+    span: 11
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 10
+    path: 3
+    span: 17
+    span: 22
+    span: 24
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 11
+    span: 18
+    span: 2
+    span: 25
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 11
+    path: 5
+    span: 18
+    span: 2
+    span: 10
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 11
+    path: 1
+    span: 18
+    span: 11
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 11
+    path: 3
+    span: 18
+    span: 22
+    span: 24
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 12
+    span: 19
+    span: 2
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 12
+    path: 5
+    span: 19
+    span: 2
+    span: 6
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 12
+    path: 1
+    span: 19
+    span: 7
+    span: 11
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 12
+    path: 3
+    span: 19
+    span: 14
+    span: 16
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 13
+    span: 20
+    span: 2
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 13
+    path: 5
+    span: 20
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 13
+    path: 1
+    span: 20
+    span: 9
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 13
+    path: 3
+    span: 20
+    span: 18
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 14
+    span: 21
+    span: 2
+    span: 19
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 14
+    path: 5
+    span: 21
+    span: 2
+    span: 7
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 14
+    path: 1
+    span: 21
+    span: 8
+    span: 13
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 14
+    path: 3
+    span: 21
+    span: 16
+    span: 18
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    span: 23
+    span: 2
+    span: 26
+    span: 3
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 1
+    span: 23
+    span: 7
+    span: 11
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    span: 24
+    span: 4
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    path: 1
+    span: 24
+    span: 4
+    span: 16
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 2
+    path: 0
+    path: 2
+    span: 24
+    span: 19
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    span: 25
+    span: 4
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    path: 1
+    span: 25
+    span: 4
+    span: 12
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 4
+    path: 0
+    path: 2
+    path: 1
+    path: 2
+    span: 25
+    span: 15
+    span: 16
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 15
+    span: 27
+    span: 2
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 15
+    path: 6
+    span: 27
+    span: 2
+    span: 6
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 15
+    path: 1
+    span: 27
+    span: 7
+    span: 11
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 15
+    path: 3
+    span: 27
+    span: 14
+    span: 16
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 3
+    path: 0
+    span: 29
+    span: 2
+    span: 31
+    span: 3
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 3
+    path: 0
+    path: 1
+    span: 29
+    span: 10
+    span: 16
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 3
+    path: 0
+    path: 2
+    path: 0
+    span: 30
+    span: 4
+    span: 29
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 3
+    path: 0
+    path: 2
+    path: 0
+    path: 5
+    span: 30
+    span: 4
+    span: 10
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 3
+    path: 0
+    path: 2
+    path: 0
+    path: 1
+    span: 30
+    span: 11
+    span: 24
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 3
+    path: 0
+    path: 2
+    path: 0
+    path: 3
+    span: 30
+    span: 27
+    span: 28
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 16
+    span: 32
+    span: 2
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 16
+    path: 6
+    span: 32
+    span: 2
+    span: 8
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 16
+    path: 1
+    span: 32
+    span: 9
+    span: 15
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 16
+    path: 3
+    span: 32
+    span: 18
+    span: 20
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 8
+    path: 0
+    span: 34
+    span: 2
+    span: 37
+    span: 3
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 8
+    path: 0
+    path: 1
+    span: 34
+    span: 8
+    span: 13
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 17
+    span: 35
+    span: 4
+    span: 29
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 17
+    path: 5
+    span: 35
+    span: 4
+    span: 10
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 17
+    path: 1
+    span: 35
+    span: 11
+    span: 23
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 17
+    path: 3
+    span: 35
+    span: 26
+    span: 28
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 18
+    span: 36
+    span: 4
+    span: 27
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 18
+    path: 5
+    span: 36
+    span: 4
+    span: 9
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 18
+    path: 1
+    span: 36
+    span: 10
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 18
+    path: 3
+    span: 36
+    span: 24
+    span: 26
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 19
+    span: 39
+    span: 2
+    span: 35
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 19
+    path: 4
+    span: 39
+    span: 2
+    span: 10
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 19
+    path: 5
+    span: 39
+    span: 11
+    span: 17
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 19
+    path: 1
+    span: 39
+    span: 18
+    span: 29
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 19
+    path: 3
+    span: 39
+    span: 32
+    span: 34
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 20
+    span: 40
+    span: 2
+    span: 38
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 20
+    path: 6
+    span: 40
+    span: 2
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 20
+    path: 1
+    span: 40
+    span: 22
+    span: 32
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 20
+    path: 3
+    span: 40
+    span: 35
+    span: 37
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 21
+    span: 41
+    span: 2
+    span: 31
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 21
+    path: 6
+    span: 41
+    span: 2
+    span: 21
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 21
+    path: 1
+    span: 41
+    span: 22
+    span: 25
+  >
+  location: <
+    path: 4
+    path: 0
+    path: 2
+    path: 21
+    path: 3
+    span: 41
+    span: 28
+    span: 30
+  >
+>
+syntax: "proto3"
