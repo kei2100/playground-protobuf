@@ -46,7 +46,7 @@ func (m *module) Execute(targets map[string]pgs.File, packages map[string]pgs.Pa
 			m.AddError(fmt.Sprintf("failed to process messages %s: %+v\n", pf.Path, err))
 			os.Exit(1)
 		}
-		pf.ProtoMessages = pms
+		pf.Messages = pms
 
 		m.AddGeneratorTemplateFile(
 			m.genGoContext.OutputPath(file).SetExt(".marshal-zap.go").String(),
@@ -61,16 +61,44 @@ func processMessages(messages []pgs.Message) ([]*protoMessage, error) {
 	pms := make([]*protoMessage, len(messages))
 
 	for i, message := range messages {
-		var pm protoMessage
-
 		// .<packageName>.<Message>.<NestedMessage>
 		fqName := message.FullyQualifiedName()
 		packageName := message.Package().ProtoName().String()
-		pm.Name = strings.TrimPrefix(fqName, fmt.Sprintf(".%s.", packageName))
-		pm.Name = strings.ReplaceAll(pm.Name, ".", "_")
+		messageName := strings.ReplaceAll(
+			strings.TrimPrefix(fqName, fmt.Sprintf(".%s.", packageName)),
+			".", "_",
+		)
 
-		pms[i] = &pm
+		pfs, err := processFields(message.Fields())
+		if err != nil {
+			return nil, err
+		}
+
+		pms[i] = &protoMessage{
+			Name:   messageName,
+			Fields: pfs,
+		}
 	}
-
 	return pms, nil
+}
+
+func processFields(fields []pgs.Field) ([]*protoField, error) {
+	pfs := make([]*protoField, len(fields))
+
+	for i, field := range fields {
+		var accessor string
+		if field.InOneOf() {
+			accessor = fmt.Sprintf("Get%s()", field.Name().UpperCamelCase().String())
+		} else {
+			accessor = field.Name().UpperCamelCase().String()
+		}
+
+		pfs[i] = &protoField{
+			Name:       field.Name().String(),
+			Accessor:   accessor,
+			Type:       field.Type().ProtoType().Proto(),
+			IsRepeated: field.Type().IsRepeated(),
+		}
+	}
+	return pfs, nil
 }
