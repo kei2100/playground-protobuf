@@ -98,6 +98,7 @@ func processFields(fields []pgs.Field) ([]*protoField, error) {
 			Accessor:   accessor,
 			Type:       field.Type().ProtoType().Proto(),
 			IsRepeated: field.Type().IsRepeated(),
+			IsMap:      field.Type().IsMap(),
 		}
 	}
 	return pfs, nil

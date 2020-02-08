@@ -44,17 +44,33 @@ func (m *Types) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 
 	enc.AddString("enum", m.Enum.String())
 
+	if obj, ok := interface{}(m.Nested).(zapcore.ObjectMarshaler); ok {
+		enc.AddObject("nested", obj)
+	} else {
+		enc.AddReflected("nested", m.Nested)
+	}
+
 	enc.AddString("oneof_string", m.GetOneofString())
 
 	enc.AddInt32("oneof_int32", m.GetOneofInt32())
 
 	string_listArrMarshaller := func(enc zapcore.ArrayEncoder) error {
 		for _, v := range m.StringList {
+
 			enc.AppendString(v)
+
 		}
 		return nil
 	}
 	enc.AddArray("string_list", zapcore.ArrayMarshalerFunc(string_listArrMarshaller))
+
+	enc.AddReflected("string_map", m.StringMap)
+
+	if obj, ok := interface{}(m.Any).(zapcore.ObjectMarshaler); ok {
+		enc.AddObject("any", obj)
+	} else {
+		enc.AddReflected("any", m.Any)
+	}
 
 	return nil
 }
