@@ -8,9 +8,11 @@ import (
 )
 
 func (m *Hello) MarshalLogObject(enc zapcore.ObjectEncoder) error {
-	if u == nil {
+	if m == nil {
 		return nil
 	}
+
+	enc.AddString("message", m.Message)
 
 	return nil
 }

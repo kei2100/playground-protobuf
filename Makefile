@@ -21,12 +21,12 @@ PLUGIN_OPT ?=
 protoc:
 	@PLUGIN_OPT=$(PLUGIN_OPT) $(MAKE) $(PBGO_FILES)
 
-.PHONY: protoc.example
+.PHONY: protoc-gen-example
 protoc-gen-example:
 	@$(MAKE) bin/plugin/$@
 	@PLUGIN_OPT=--example_out=go $(MAKE) protoc
 
-.PHONY: protoc.marshal-zap
+.PHONY: protoc-gen-marshal-zap
 protoc-gen-marshal-zap:
 	@$(MAKE) bin/plugin/$@
 	@PLUGIN_OPT=--marshal-zap_out=:./go $(MAKE) protoc

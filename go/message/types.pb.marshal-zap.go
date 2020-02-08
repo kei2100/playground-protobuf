@@ -8,17 +8,63 @@ import (
 )
 
 func (m *Types) MarshalLogObject(enc zapcore.ObjectEncoder) error {
-	if u == nil {
+	if m == nil {
 		return nil
 	}
+
+	enc.AddFloat64("float64", m.Float64)
+
+	enc.AddFloat32("float32", m.Float32)
+
+	enc.AddInt32("int32", m.Int32)
+
+	enc.AddInt64("int64", m.Int64)
+
+	enc.AddUint32("uint32", m.Uint32)
+
+	enc.AddUint64("uint64", m.Uint64)
+
+	enc.AddInt32("sint32", m.Sint32)
+
+	enc.AddInt64("sint64", m.Sint64)
+
+	enc.AddUint32("fixed32", m.Fixed32)
+
+	enc.AddUint64("fixed64", m.Fixed64)
+
+	enc.AddInt32("sfixed32", m.Sfixed32)
+
+	enc.AddInt64("sfixed64", m.Sfixed64)
+
+	enc.AddBool("bool", m.Bool)
+
+	enc.AddString("string", m.String)
+
+	enc.AddByteString("bytes", m.Bytes)
+
+	enc.AddString("enum", m.Enum.String())
+
+	enc.AddString("oneof_string", m.GetOneofString())
+
+	enc.AddInt32("oneof_int32", m.GetOneofInt32())
+
+	string_listArrMarshaller := func(enc zapcore.ArrayEncoder) error {
+		for _, v := range m.StringList {
+			enc.AppendString(v)
+		}
+		return nil
+	}
+	enc.AddArray("string_list", zapcore.ArrayMarshalerFunc(string_listArrMarshaller))
 
 	return nil
 }
 
 func (m *Types_Nested) MarshalLogObject(enc zapcore.ObjectEncoder) error {
-	if u == nil {
+	if m == nil {
 		return nil
 	}
+
+	enc.AddString("nested_string", m.NestedString)
 
 	return nil
 }
