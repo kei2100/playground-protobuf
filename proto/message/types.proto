@@ -19,6 +19,7 @@ message Types {
   sfixed64 sfixed64 = 12;
   bool bool = 13;
   string string = 14;
+//  string string_ = 27; // The JSON camel-case name of field "string_" conflicts with field "string". This is not allowed in proto3.
   bytes bytes = 15;
 
   enum Enum {
@@ -38,6 +39,10 @@ message Types {
   }
 
   repeated string string_list = 20;
-  map<string, string> string_map = 21;
-  google.protobuf.Any any = 22;
+  map<string, string> string_string_map = 21;
+  map<int32, string> int32_string_map = 22;
+  map<int64, string> int64_string_map = 23;
+  map<int64, int64> int64_int64_map = 24;
+  map<int64, Nested> string_message_map = 25;
+  google.protobuf.Any any = 26;
 }

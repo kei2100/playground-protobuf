@@ -85,21 +85,28 @@ func processMessages(messages []pgs.Message) ([]*protoMessage, error) {
 func processFields(fields []pgs.Field) ([]*protoField, error) {
 	pfs := make([]*protoField, len(fields))
 
+	// TODO field mask
+	// TODO 予約済み field
+
 	for i, field := range fields {
-		var accessor string
+		pf := protoField{}
+		pf.Name = field.Name().String()
 		if field.InOneOf() {
-			accessor = fmt.Sprintf("Get%s()", field.Name().UpperCamelCase().String())
+			pf.Accessor = fmt.Sprintf("Get%s()", field.Name().UpperCamelCase().String())
 		} else {
-			accessor = field.Name().UpperCamelCase().String()
+			pf.Accessor = field.Name().UpperCamelCase().String()
+		}
+		pf.Type = protoType(field.Type().ProtoType().Proto())
+		pf.IsRepeated = field.Type().IsRepeated()
+		pf.IsMap = field.Type().IsMap()
+		if pf.IsMap {
+			pf.MapType = &mapType{
+				KeyType:   keyType{protoType: protoType(field.Type().Key().ProtoType().Proto())},
+				ValueType: protoType(field.Type().Element().ProtoType().Proto()),
+			}
 		}
 
-		pfs[i] = &protoField{
-			Name:       field.Name().String(),
-			Accessor:   accessor,
-			Type:       field.Type().ProtoType().Proto(),
-			IsRepeated: field.Type().IsRepeated(),
-			IsMap:      field.Type().IsMap(),
-		}
+		pfs[i] = &pf
 	}
 	return pfs, nil
 }

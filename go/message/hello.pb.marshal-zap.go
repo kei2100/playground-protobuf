@@ -5,7 +5,11 @@ package message
 
 import (
 	"go.uber.org/zap/zapcore"
+	"strconv"
 )
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ = strconv.FormatInt
 
 func (m *Hello) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	if m == nil {

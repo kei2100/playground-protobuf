@@ -5,7 +5,11 @@ package message
 
 import (
 	"go.uber.org/zap/zapcore"
+	"strconv"
 )
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ = strconv.FormatInt
 
 func (m *Types) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	if m == nil {
@@ -64,7 +68,54 @@ func (m *Types) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	}
 	enc.AddArray("string_list", zapcore.ArrayMarshalerFunc(string_listArrMarshaller))
 
-	enc.AddReflected("string_map", m.StringMap)
+	enc.AddObject("string_string_map", zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
+		for k, v := range m.StringStringMap {
+
+			enc.AddString(k, v)
+
+			return nil
+		}
+	}))
+
+	enc.AddObject("int32_string_map", zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
+		for k, v := range m.Int32StringMap {
+
+			enc.AddString(strconv.FormatInt(int64(k), 10), v)
+
+			return nil
+		}
+	}))
+
+	enc.AddObject("int64_string_map", zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
+		for k, v := range m.Int64StringMap {
+
+			enc.AddString(strconv.FormatInt(k, 10), v)
+
+			return nil
+		}
+	}))
+
+	enc.AddObject("int64_int64_map", zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
+		for k, v := range m.Int64Int64Map {
+
+			enc.AddInt64(strconv.FormatInt(k, 10), v)
+
+			return nil
+		}
+	}))
+
+	enc.AddObject("string_message_map", zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
+		for k, v := range m.StringMessageMap {
+
+			if obj, ok := interface{}(v).(zapcore.ObjectMarshaler); ok {
+				enc.AddObject(strconv.FormatInt(k, 10), obj)
+			} else {
+				enc.AddReflected(strconv.FormatInt(k, 10), v)
+			}
+
+			return nil
+		}
+	}))
 
 	if obj, ok := interface{}(m.Any).(zapcore.ObjectMarshaler); ok {
 		enc.AddObject("any", obj)
