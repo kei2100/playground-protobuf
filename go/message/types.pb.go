@@ -47,23 +47,24 @@ func (Types_Enum) EnumDescriptor() ([]byte, []int) {
 }
 
 type Types struct {
-	Float64  float64       `protobuf:"fixed64,1,opt,name=float64,proto3" json:"float64,omitempty"`
-	Float32  float32       `protobuf:"fixed32,2,opt,name=float32,proto3" json:"float32,omitempty"`
-	Int32    int32         `protobuf:"varint,3,opt,name=int32,proto3" json:"int32,omitempty"`
-	Int64    int64         `protobuf:"varint,4,opt,name=int64,proto3" json:"int64,omitempty"`
-	Uint32   uint32        `protobuf:"varint,5,opt,name=uint32,proto3" json:"uint32,omitempty"`
-	Uint64   uint64        `protobuf:"varint,6,opt,name=uint64,proto3" json:"uint64,omitempty"`
-	Sint32   int32         `protobuf:"zigzag32,7,opt,name=sint32,proto3" json:"sint32,omitempty"`
-	Sint64   int64         `protobuf:"zigzag64,8,opt,name=sint64,proto3" json:"sint64,omitempty"`
-	Fixed32  uint32        `protobuf:"fixed32,9,opt,name=fixed32,proto3" json:"fixed32,omitempty"`
-	Fixed64  uint64        `protobuf:"fixed64,10,opt,name=fixed64,proto3" json:"fixed64,omitempty"`
-	Sfixed32 int32         `protobuf:"fixed32,11,opt,name=sfixed32,proto3" json:"sfixed32,omitempty"`
-	Sfixed64 int64         `protobuf:"fixed64,12,opt,name=sfixed64,proto3" json:"sfixed64,omitempty"`
-	Bool     bool          `protobuf:"varint,13,opt,name=bool,proto3" json:"bool,omitempty"`
-	String_  string        `protobuf:"bytes,14,opt,name=string,proto3" json:"string,omitempty"`
-	Bytes    []byte        `protobuf:"bytes,15,opt,name=bytes,proto3" json:"bytes,omitempty"`
-	Enum     Types_Enum    `protobuf:"varint,16,opt,name=enum,proto3,enum=github.com.kei2100.playground_protobuf.message.Types_Enum" json:"enum,omitempty"`
-	Nested   *Types_Nested `protobuf:"bytes,17,opt,name=nested,proto3" json:"nested,omitempty"`
+	Float64  float64 `protobuf:"fixed64,1,opt,name=float64,proto3" json:"float64,omitempty"`
+	Float32  float32 `protobuf:"fixed32,2,opt,name=float32,proto3" json:"float32,omitempty"`
+	Int32    int32   `protobuf:"varint,3,opt,name=int32,proto3" json:"int32,omitempty"`
+	Int64    int64   `protobuf:"varint,4,opt,name=int64,proto3" json:"int64,omitempty"`
+	Uint32   uint32  `protobuf:"varint,5,opt,name=uint32,proto3" json:"uint32,omitempty"`
+	Uint64   uint64  `protobuf:"varint,6,opt,name=uint64,proto3" json:"uint64,omitempty"`
+	Sint32   int32   `protobuf:"zigzag32,7,opt,name=sint32,proto3" json:"sint32,omitempty"`
+	Sint64   int64   `protobuf:"zigzag64,8,opt,name=sint64,proto3" json:"sint64,omitempty"`
+	Fixed32  uint32  `protobuf:"fixed32,9,opt,name=fixed32,proto3" json:"fixed32,omitempty"`
+	Fixed64  uint64  `protobuf:"fixed64,10,opt,name=fixed64,proto3" json:"fixed64,omitempty"`
+	Sfixed32 int32   `protobuf:"fixed32,11,opt,name=sfixed32,proto3" json:"sfixed32,omitempty"`
+	Sfixed64 int64   `protobuf:"fixed64,12,opt,name=sfixed64,proto3" json:"sfixed64,omitempty"`
+	Bool     bool    `protobuf:"varint,13,opt,name=bool,proto3" json:"bool,omitempty"`
+	String_  string  `protobuf:"bytes,14,opt,name=string,proto3" json:"string,omitempty"`
+	//  string string_ = 27; // The JSON camel-case name of field "string_" conflicts with field "string". This is not allowed in proto3.
+	Bytes  []byte        `protobuf:"bytes,15,opt,name=bytes,proto3" json:"bytes,omitempty"`
+	Enum   Types_Enum    `protobuf:"varint,16,opt,name=enum,proto3,enum=github.com.kei2100.playground_protobuf.message.Types_Enum" json:"enum,omitempty"`
+	Nested *Types_Nested `protobuf:"bytes,17,opt,name=nested,proto3" json:"nested,omitempty"`
 	// Types that are valid to be assigned to Oneof:
 	//	*Types_OneofString
 	//	*Types_OneofInt32

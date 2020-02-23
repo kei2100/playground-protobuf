@@ -42,7 +42,7 @@ func (m *Types) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 
 	enc.AddBool("bool", m.Bool)
 
-	enc.AddString("string", m.String)
+	enc.AddString("string", m.String_)
 
 	enc.AddByteString("bytes", m.Bytes)
 

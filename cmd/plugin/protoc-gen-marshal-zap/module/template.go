@@ -134,7 +134,7 @@ func (m *{{ .Name }}) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 		{{- /* repeated repeated -> NOT supported */ -}}
 
 		{{ .Name }}ArrMarshaller := func (enc zapcore.ArrayEncoder) error {
-	        for _, v := range m.{{ .Accessor }}{
+	        for _, v := range m.{{ .Accessor }} {
 				{{ if .Type.IsScalar }}
 	            	enc.Append{{ .Type.ScalarName }}(v)
 				{{ else if .Type.IsEnum }}
@@ -155,7 +155,7 @@ func (m *{{ .Name }}) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 
 	{{ else if .IsMap }}
 		enc.AddObject("{{ .Name }}", zapcore.ObjectMarshalerFunc(func(enc zapcore.ObjectEncoder) error {
-			for k, v := range m.{{ .Accessor }}{
+			for k, v := range m.{{ .Accessor }} {
 				{{ if .MapType.ValueType.IsScalar }}
 					enc.Add{{ .MapType.ValueType.ScalarName }}({{ .MapType.KeyType.KeyToString "k" }}, v)
 				{{ else if .MapType.ValueType.IsEnum }}

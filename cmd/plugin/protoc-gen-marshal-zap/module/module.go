@@ -82,6 +82,13 @@ func processMessages(messages []pgs.Message) ([]*protoMessage, error) {
 	return pms, nil
 }
 
+var reservedKeywords = map[string]struct{}{
+	"Reset": {},
+	"String": {},
+	"ProtoMessage": {},
+	"Descriptor": {},
+}
+
 func processFields(fields []pgs.Field) ([]*protoField, error) {
 	pfs := make([]*protoField, len(fields))
 
@@ -91,14 +98,19 @@ func processFields(fields []pgs.Field) ([]*protoField, error) {
 	for i, field := range fields {
 		pf := protoField{}
 		pf.Name = field.Name().String()
-		if field.InOneOf() {
-			pf.Accessor = fmt.Sprintf("Get%s()", field.Name().UpperCamelCase().String())
-		} else {
-			pf.Accessor = field.Name().UpperCamelCase().String()
+
+		pf.Accessor = field.Name().UpperCamelCase().String()
+		if _, ok := reservedKeywords[pf.Accessor]; ok {
+			pf.Accessor += "_"
 		}
+		if field.InOneOf() {
+			pf.Accessor = fmt.Sprintf("Get%s()", pf.Accessor)
+		}
+
 		pf.Type = protoType(field.Type().ProtoType().Proto())
 		pf.IsRepeated = field.Type().IsRepeated()
 		pf.IsMap = field.Type().IsMap()
+
 		if pf.IsMap {
 			pf.MapType = &mapType{
 				KeyType:   keyType{protoType: protoType(field.Type().Key().ProtoType().Proto())},
