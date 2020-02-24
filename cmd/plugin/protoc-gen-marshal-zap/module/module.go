@@ -93,7 +93,6 @@ func processFields(fields []pgs.Field) ([]*protoField, error) {
 	pfs := make([]*protoField, len(fields))
 
 	// TODO field mask
-	// TODO 予約済み field
 
 	for i, field := range fields {
 		pf := protoField{}
