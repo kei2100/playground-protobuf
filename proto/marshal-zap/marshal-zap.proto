@@ -1,5 +1,5 @@
 syntax = "proto3";
-package github.com.kei2100.playground_protobuf.marshal_zap;
+package marshal_zap;
 option go_package = "github.com/kei2100/playground-protobuf/proto/marshal-zap";
 
 import "google/protobuf/descriptor.proto";
