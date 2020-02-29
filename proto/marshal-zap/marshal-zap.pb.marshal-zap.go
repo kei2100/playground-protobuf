@@ -9,4 +9,5 @@ import (
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
+var _ = zapcore.NewNopCore
 var _ = strconv.FormatInt
