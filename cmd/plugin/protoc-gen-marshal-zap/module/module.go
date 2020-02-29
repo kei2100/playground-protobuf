@@ -6,11 +6,9 @@ import (
 	"os"
 	"strings"
 
-	marshal_zap "github.com/kei2100/playground-protobuf/go/marshal-zap"
-
-	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
-
+	marshal_zap "github.com/kei2100/playground-protobuf/proto/marshal-zap"
 	pgs "github.com/lyft/protoc-gen-star"
+	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 )
 
 type module struct {

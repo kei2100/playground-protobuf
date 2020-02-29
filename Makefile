@@ -12,7 +12,7 @@ fmt:
 #
 # protoc
 #
-PBGO_FILES ?= $(shell find proto -type f -name '*.proto' | perl -pe 's|^proto/(.+)\.proto$$|go/$$1.pb.go|gc')
+PBGO_FILES ?= $(shell find proto -type f -name '*.proto' | perl -pe 's/proto$$/pb.go/gc')
 BIN_FILES ?= $(shell  find cmd/plugin -type d -maxdepth 1 -mindepth 1 | perl -pe 's|^cmd/|bin/|gc')
 BIN_PREREQ_FILES ?= $(shell find cmd -name '*.go')
 PLUGIN_OPT ?=
@@ -24,18 +24,18 @@ protoc:
 .PHONY: protoc-gen-example
 protoc-gen-example:
 	@$(MAKE) bin/plugin/$@
-	@PLUGIN_OPT=--example_out=go $(MAKE) protoc
+	@PLUGIN_OPT=--example_out=proto $(MAKE) protoc
 
 .PHONY: protoc-gen-marshal-zap
 protoc-gen-marshal-zap:
 	@$(MAKE) bin/plugin/$@
-	@PLUGIN_OPT=--marshal-zap_out=:./go $(MAKE) protoc
+	@PLUGIN_OPT=--marshal-zap_out=:./proto $(MAKE) protoc
 
-go/%.pb.go: proto/%.proto $(BIN_PREREQ_FILES) Makefile
+proto/%.pb.go: proto/%.proto $(BIN_PREREQ_FILES) Makefile
 	@mkdir -p $(@D)
-	@PATH=$(shell echo $$(pwd)/bin/plugin:$$PATH) protoc $(strip --go_out=go $(PLUGIN_OPT)) proto/$*.proto
-	@find go/github.com/kei2100/playground-protobuf -type f -name '*.go' | xargs -n 1 -I {} mv {} $(@D)
-	@rm -rf go/github.com
+	@PATH=$(shell echo $$(pwd)/bin/plugin:$$PATH) protoc $(strip --go_out=proto $(PLUGIN_OPT)) proto/$*.proto
+	@find proto/github.com/kei2100/playground-protobuf -type f -name '*.go' | xargs -n 1 -I {} mv {} $(@D)
+	@rm -rf proto/github.com
 
 #
 # bin
