@@ -6,6 +6,8 @@ import (
 	"os"
 	"strings"
 
+	marshal_zap "github.com/kei2100/playground-protobuf/go/marshal-zap"
+
 	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 
 	pgs "github.com/lyft/protoc-gen-star"
@@ -83,20 +85,24 @@ func processMessages(messages []pgs.Message) ([]*protoMessage, error) {
 }
 
 var reservedKeywords = map[string]struct{}{
-	"Reset": {},
-	"String": {},
+	"Reset":        {},
+	"String":       {},
 	"ProtoMessage": {},
-	"Descriptor": {},
+	"Descriptor":   {},
 }
 
 func processFields(fields []pgs.Field) ([]*protoField, error) {
 	pfs := make([]*protoField, len(fields))
 
-	// TODO field mask
-
 	for i, field := range fields {
 		pf := protoField{}
 		pf.Name = field.Name().String()
+
+		var mask bool
+		if _, err := field.Extension(marshal_zap.E_Mask, &mask); err != nil {
+			return nil, fmt.Errorf("failed to get `mask` extension value: %v", err)
+		}
+		pf.IsMask = mask
 
 		pf.Accessor = field.Name().UpperCamelCase().String()
 		if _, ok := reservedKeywords[pf.Accessor]; ok {

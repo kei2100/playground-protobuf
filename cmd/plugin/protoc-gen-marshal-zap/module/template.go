@@ -26,6 +26,7 @@ type protoField struct {
 	IsRepeated bool
 	IsMap      bool
 	MapType    *mapType
+	IsMask     bool
 }
 
 type mapType struct {

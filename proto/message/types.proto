@@ -21,6 +21,7 @@ message Types {
   string string = 14;
 //  string string_ = 27; // The JSON camel-case name of field "string_" conflicts with field "string". This is not allowed in proto3.
   bytes bytes = 15;
+  string will_mask = 27;
 
   enum Enum {
     ENUM_UNKNOWN = 0;
