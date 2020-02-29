@@ -47,6 +47,8 @@ func (m *Types) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 
 	enc.AddByteString("bytes", m.Bytes)
 
+	enc.AddString("will_mask", "MASKED")
+
 	enc.AddString("enum", m.Enum.String())
 
 	if obj, ok := interface{}(m.Nested).(zapcore.ObjectMarshaler); ok {

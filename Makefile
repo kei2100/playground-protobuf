@@ -31,6 +31,7 @@ protoc-gen-marshal-zap:
 	@$(MAKE) bin/plugin/$@
 	@PLUGIN_OPT=--marshal-zap_out=:./proto $(MAKE) protoc
 
+# TODO fix 依存関係 - types.pb.goを削除しないとtypes.pb.marshal-zap.goを作成できないなど
 proto/%.pb.go: proto/%.proto $(BIN_PREREQ_FILES) Makefile
 	@mkdir -p $(@D)
 	@PATH=$(shell echo $$(pwd)/bin/plugin:$$PATH) protoc $(strip --go_out=proto $(PLUGIN_OPT)) proto/$*.proto

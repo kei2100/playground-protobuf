@@ -127,7 +127,9 @@ func (m *{{ .Name }}) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	}
 
 {{ range .Fields }}
-	{{ if .IsRepeated }}
+	{{ if .IsMask }}
+		enc.AddString("{{ .Name }}", "MASKED")
+	{{ else if .IsRepeated }}
 		{{- /* NOTE */ -}}
 		{{- /* repeated scalar  -> supported */ -}}
 		{{- /* repeated message -> supported */ -}}

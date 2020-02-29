@@ -3,7 +3,7 @@ package github.com.kei2100.playground_protobuf.message;
 option go_package = "github.com/kei2100/playground-protobuf/proto/message";
 
 import "google/protobuf/any.proto";
-//import "github.com/kei2100/playground-protobuf/proto/marshal-zap/marshal-zap.proto";
+import "proto/marshal-zap/marshal-zap.proto";
 
 message Types {
   double float64 = 1;
@@ -22,7 +22,7 @@ message Types {
   string string = 14;
 //  string string_ = 27; // The JSON camel-case name of field "string_" conflicts with field "string". This is not allowed in proto3.
   bytes bytes = 15;
-//  string will_mask = 28 [(marshal_zap.mask) = true];
+  string will_mask = 28 [(marshal_zap.mask) = true];
 
   enum Enum {
     ENUM_UNKNOWN = 0;
